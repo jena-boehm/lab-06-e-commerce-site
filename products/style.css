@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.plant {
+    width: 200px;
+    padding: 10px;
+    border: solid 1px black;
+    text-align: center;
+    border-radius: 5px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.plant > img {
+    width: 150px;
+}
+
