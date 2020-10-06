@@ -45,3 +45,27 @@ export const plants = [
         isOnSale: true
     },
 ];
+
+
+export const cart = [
+    {
+        id: 'md1',
+        quantity: 2,
+    },
+    {
+        id: 'snake1',
+        quantity: 1,
+    },
+    {
+        id: 'sp1',
+        quantity: 1,
+    },
+    {
+        id: 'zc1',
+        quantity: 4,
+    },
+    {
+        id: 'alocasia1',
+        quantity: 2,
+    },
+];

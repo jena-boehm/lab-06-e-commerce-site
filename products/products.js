@@ -1,5 +1,5 @@
 import { renderPlant } from '../utils.js';
-import { plants } from './data.js'; 
+import { plants } from '../data.js'; 
 
 const ul = document.querySelector('#plants');
 
