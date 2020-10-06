@@ -1,8 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+section {
+    display: grid;
 }
 
 .plant {
@@ -15,6 +26,16 @@ main {
 
 ul {
     list-style-type: none;
+}
+
+li {
+    float: left;
+    height: 500px;
+    line-height: 19px;
+}
+
+button {
+    align-self: baseline;
 }
 
 .plant > img {
