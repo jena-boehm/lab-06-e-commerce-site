@@ -1,4 +1,6 @@
-import { plants } from '/data.js';
+import { plants } from './data.js';
+
+export const CART = 'CART';
 
 export function renderPlant(plant) {
     const li = document.createElement('li');
@@ -47,6 +49,22 @@ export function renderPlant(plant) {
 
     // BUTTON
     button.textContent = 'Add to cart';
+    button.addEventListener('click', () => {
+        const cart = getFromLocalStorage(CART) || [];
+        const itemInCart = findById(cart, plant.id);
+
+        if (itemInCart === undefined) {
+            const newCartItem = {
+                id: plant.id,
+                quantity: 1,
+            };
+
+            cart.push(newCartItem);
+        } else {
+            itemInCart.quantity++;
+        }
+        setInLocalStorage(CART, cart);
+    });
     
     li.appendChild(button);
 
@@ -80,4 +98,16 @@ export function calculateTotal(cart) {
         total = total + subTotal;
     }
     return total;
+}
+
+export function getFromLocalStorage(key) {
+    const item = localStorage.getItem(key);
+    return JSON.parse(item);
+}
+
+export function setInLocalStorage(key, value) {
+    const stringItem = JSON.stringify(value);
+    
+    localStorage.setItem(key, stringItem);
+    return value; 
 }
