@@ -1,4 +1,4 @@
-import { plants } from './data.js';
+import { plants } from '/data.js';
 
 export function renderPlant(plant) {
     const li = document.createElement('li');
