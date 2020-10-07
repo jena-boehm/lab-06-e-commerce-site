@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    display: grid;
+    width: 600px;
+    border: 1px black solid;
+}
+
+table {
+   text-align: center;
+   line-height: 25px;
+}
+
+td {
+    border: 1px gray dotted;
+}
+
+tfoot {
+    text-align: right;
+    font-weight: bold;
+}
+
+.total-number {
+    text-align: center;
+}
+
+button {
+    width: 100px;
+}

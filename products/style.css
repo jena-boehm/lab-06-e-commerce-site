@@ -10,6 +10,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 section {
@@ -30,12 +31,11 @@ ul {
 
 li {
     float: left;
-    height: 500px;
-    line-height: 19px;
-}
-
-button {
-    align-self: baseline;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .plant > img {

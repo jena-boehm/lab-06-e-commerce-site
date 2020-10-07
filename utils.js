@@ -1,3 +1,5 @@
+import { plants } from '../data.js';
+
 export function renderPlant(plant) {
     const li = document.createElement('li');
     const name = document.createElement('p');
@@ -39,7 +41,7 @@ export function renderPlant(plant) {
 
     // PRICE
     price.classList.add('price');
-    price.textContent = plant.price;
+    price.textContent = `$${plant.price}`;
 
     li.appendChild(price);
 
@@ -49,4 +51,33 @@ export function renderPlant(plant) {
     li.appendChild(button);
 
     return li;
+}
+
+
+export function findById(someArray, someId) {
+    for (let i = 0; i < someArray.length; i++) {
+        const item = someArray[i];
+        if (item.id === someId) {
+            return item;
+        }
+    }
+}
+
+
+export function calcLineItem(quantity, price) {
+    const subtotal = quantity * price;
+    return Math.round(subtotal * 100) / 100;
+}
+
+
+export function calculateTotal(cart) {
+    let total = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+        const item = cart[i];
+        const plant = findById(plants, item.id);
+        const subTotal = item.quantity * plant.price;
+        total = total + subTotal;
+    }
+    return total;
 }
