@@ -1,5 +1,5 @@
 // IMPORT MODULES under test here:
-import { renderPlant, findById, calcLineItem } from '../utils.js';
+import { renderPlant, findById, calcLineItem, calculateTotal } from '../utils.js';
 import { renderTableRow } from '/cart/render-line-items.js';
 
 const test = QUnit.test;
@@ -12,7 +12,7 @@ test('renderPlant should take in a plant and return an li with the appropriate c
         name: 'Monstera Deliciosa',
         image: '../assets/monstera.jpg',
         description: 'Monsteras are unique, easygoing houseplants whose dramatic leaves are adorned with dramatic hole formations. Also called the "Swiss Cheese Plant." Likes bright indirect light. 12"',
-        price: '$40',
+        price: 40,
         size: '12"',
         category: 'Houseplant',
         isOnSale: true
@@ -119,4 +119,24 @@ test('renderTableRow should take in a cart item and return a table row', (expect
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual.outerHTML, expected);
+});
+
+
+test('calculateTotal takes in the cart subtotals and and return the total', (expect) => {
+    //Arrange
+    // Set up your arguments and expectations
+    const cartItem = [{
+        id: 'md1',
+        quantity: 2,
+    }];
+
+    const expected = 80;
+    
+    //Act 
+    // Call the function you're testing and set the result to a const
+    const actual = calculateTotal(cartItem);
+
+    //Expect
+    // Make assertions about what is expected versus the actual result
+    expect.equal(actual, expected);
 });
