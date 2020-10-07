@@ -1,15 +1,21 @@
-import { plants, cart } from '../data.js';
+// import { plants } from '../data.js';
 import { renderTableRow } from './render-line-items.js';
-import { findById, calculateTotal } from '../utils.js';
+import { calculateTotal, CART, getFromLocalStorage } from '../utils.js';
+
 
 const table = document.querySelector('tbody');
+const cart = getFromLocalStorage(CART) || [];
+const orderButton = document.querySelector('button');
+
 
 for (let i = 0; i < cart.length; i++) {
     const plant = cart[i];
 
-    const tr = renderTableRow(plant);
 
-    table.appendChild(tr);
+    if (plant.quantity >= 0) {
+        const tr = renderTableRow(plant);
+        table.appendChild(tr);
+    }
 }
 
 const total = calculateTotal(cart);
@@ -20,4 +26,9 @@ totalCell.textContent = `$${total}`;
 
 
 
+orderButton.addEventListener('click', () => {
+    alert('Thank you! Your new plant friends are on their way!');
 
+    localStorage.clear();
+    window.location.href = '/';
+})
