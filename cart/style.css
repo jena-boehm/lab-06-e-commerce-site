@@ -3,6 +3,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('/assets/background6.jpeg');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 main {
@@ -10,6 +15,9 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #fcdcdd;
+    border: 5px solid white;
+    border-radius: 10px;
 }
 
 section {
