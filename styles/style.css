@@ -1,96 +1,56 @@
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-image: url('/assets/background6.jpeg');
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
 }
 
 main {
-    background: white;
-    min-width: 70%;
-    height: 400px;
-    margin: 200px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
-
-header {
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    height: var(--header-height);
-    box-shadow: var(--shadow);
-}
-
-footer {
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    box-shadow: var(--shadow);
-}
-
-
-h2 {
-    font-size: 1.8rem;
+    justify-content: center;
+    text-align: center;
+    background: #fcdcdd;
+    border: 5px solid white;
+    border-radius: 10px;
+    width: 90%;
+    margin: 70px;
+    height: 500px;
+    box-shadow: 1px 2px 9px 2px #5e715e;
+    font-family: 'MontserratRegular', serif;
     font-weight: bold;
 }
 
-.gutter-right {
-    margin-right: 20px;
+.header {
+    justify-content: flex-start;
+    margin: 0 0 100px 0;
+    font-size: 1.2rem;
+    text-shadow: 1px 2px 3px #6e8989;
 }
 
-.main-logo {
-    animation: pulse 5s infinite ease-in-out;
+button {
+    width: 120px;
+    height: 35px;
+    font-size: .9rem;
+    font-family: 'MontserratRegular';
+    box-shadow: 1px 2px 9px -5px #5e715e;
+    margin: 10px;
+    font-family: 'MontserratRegular', serif;
 }
 
-header img {
-    height: var(--header-height);
+button:hover {
+    background: #5e715e;
+    color: white;
 }
 
-
-
-content {
-    width: 80%;
+button:active {
+    background-color: #354e40;
+    transform: translateY(2px);
 }
-
-p {
-    margin: var(--gutter);
-}
-  
-footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    height: var(--footer-height);
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    box-shadow: var(--shadow);
-}
-  
-  @keyframes pulse {
-    20% {
-      transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
-    }
-
-    40% {
-        transform: rotate3d(10, 10, -10, 50deg) scale(1);
-    }
-
-    60% {
-        transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
-      }
-
-    80% {
-        transform: rotate3d(10, 10, 10, 50deg) scale(1);
-    }
-
-  }

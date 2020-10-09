@@ -1,5 +1,7 @@
-import { plants as plantData } from '../data.js';
-import { findById } from '../utils.js';
+// import { plants as plantData } from '../data.js';
+import { findById, seedAndGetProducts } from '../utils.js';
+
+const localStoragePlants = seedAndGetProducts();
 
 
 export function renderTableRow(cartItem) {
@@ -12,7 +14,7 @@ export function renderTableRow(cartItem) {
 
     tdQuantity.textContent = cartItem.quantity;
 
-    const plantObject = findById(plantData, cartItem.id);
+    const plantObject = findById(localStoragePlants, cartItem.id);
 
     const name = plantObject.name;
     tdItem.textContent = name;
@@ -29,4 +31,16 @@ export function renderTableRow(cartItem) {
     tr.append(tdItem, tdPrice, tdQuantity, tdSubtotal);
 
     return tr;
+}
+
+export function calculateTotal(cartArray) {
+    let total = 0;
+
+    for (let i = 0; i < cartArray.length; i++) {
+        const item = cartArray[i];
+        const plant = findById(localStoragePlants, item.id);
+        const subTotal = item.quantity * plant.price;
+        total = total + subTotal;
+    }
+    return total;
 }

@@ -1,6 +1,6 @@
 // import { plants } from '../data.js';
-import { renderTableRow } from './render-line-items.js';
-import { calculateTotal, CART, getFromLocalStorage } from '../utils.js';
+import { renderTableRow, calculateTotal } from './cart-utils.js';
+import { CART, getFromLocalStorage } from '../utils.js';
 
 
 const table = document.querySelector('tbody');
@@ -31,4 +31,4 @@ orderButton.addEventListener('click', () => {
 
     localStorage.clear();
     window.location.href = '/';
-})
+});
