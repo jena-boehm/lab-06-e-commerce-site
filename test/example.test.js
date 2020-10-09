@@ -1,8 +1,10 @@
 // IMPORT MODULES under test here:
-import { renderPlant, findById, calcLineItem, calculateTotal } from '../utils.js';
+import { renderPlant, findById, calcLineItem, calculateTotal, addProduct, PRODUCTS } from '../utils.js';
 import { renderTableRow } from '/cart/render-line-items.js';
 
 const test = QUnit.test;
+
+
 
 test('renderPlant should take in a plant and return an li with the appropriate contents', (expect) => {
     //Arrange
@@ -11,14 +13,13 @@ test('renderPlant should take in a plant and return an li with the appropriate c
         id: 'md1',
         name: 'Monstera Deliciosa',
         image: '../assets/monstera.jpg',
-        description: 'Monsteras are unique, easygoing houseplants whose dramatic leaves are adorned with dramatic hole formations. Also called the "Swiss Cheese Plant." Likes bright indirect light. 12"',
         price: 40,
         size: '12"',
         category: 'Houseplant',
         isOnSale: true
     };
     
-    const expected = '<li class="plant on-sale"><p class="name">Monstera Deliciosa</p><img class="image" src="../assets/monstera.jpg"><p class="description">Monsteras are unique, easygoing houseplants whose dramatic leaves are adorned with dramatic hole formations. Also called the "Swiss Cheese Plant." Likes bright indirect light. 12"</p><p class="category">Houseplant</p><p class="price">$40</p><button>Add to cart</button></li>';
+    const expected = '<li class="plant on-sale"><p class="name">Monstera Deliciosa</p><img class="image" src="../assets/monstera.jpg"><p class="category">Houseplant</p><p class="price">$40</p><button>Add to cart</button></li>';
     
     //Act 
     // Call the function you're testing and set the result to a const
@@ -139,4 +140,67 @@ test('calculateTotal takes in the cart subtotals and and return the total', (exp
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
+});
+
+
+
+test('addProduct takes in a product object and adds it to local storage, returning nothing', (expect) => {
+   
+    const newProduct = {
+        title: 'Snake Plant',
+        price: 30
+    };
+
+
+    const expected = [
+        {
+            'category': 'Houseplant',
+            'id': 'md1',
+            'image': '../assets/monstera.jpg',
+            'isOnSale': true,
+            'name': 'Monstera Deliciosa',
+            'price': 40
+        },
+        {
+            'category': 'Succulent',
+            'id': 'snake1',
+            'image': '../assets/snake.jpg',
+            'isOnSale': true,
+            'name': 'Snake Plant',
+            'price': 30
+        },
+        {
+            'category': 'Houseplant',
+            'id': 'sp1',
+            'image': '../assets/pothos.png',
+            'isOnSale': true,
+            'name': 'Satin Pothos',
+            'price': 15
+        },
+        {
+            'category': 'Tropical Houseplant',
+            'id': 'zc1',
+            'image': '../assets/calathea.jpg',
+            'isOnSale': true,
+            'name': 'Zebra Calathea',
+            'price': 20
+        },
+        {
+            'category': 'Tropical Houseplant',
+            'id': 'alocasia1',
+            'image': '../assets/alocasia.jpg',
+            'isOnSale': true,
+            'name': 'Alocasia',
+            'price': 30
+        },
+        {
+            title: 'Snake Plant',
+            price: 30
+        }];
+    
+    addProduct(newProduct);
+
+    const localStoragePlants = JSON.parse(localStorage.getItem(PRODUCTS));
+
+    expect.deepEqual(expected, localStoragePlants);
 });

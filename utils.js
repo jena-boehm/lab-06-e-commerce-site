@@ -1,12 +1,14 @@
-import { plants } from './data.js';
+import { plants as hardCodedPlants } from './data.js';
 
 export const CART = 'CART';
+export const PRODUCTS = 'PRODUCTS';
+
+
 
 export function renderPlant(plant) {
     const li = document.createElement('li');
     const name = document.createElement('p');
     const image = document.createElement('img');
-    const description = document.createElement('p');
     const category = document.createElement('p');
     const price = document.createElement('p');
     const button = document.createElement('button');
@@ -28,12 +30,6 @@ export function renderPlant(plant) {
     image.src = `${plant.image}`;
 
     li.appendChild(image);
-
-    // DESCRIPTION
-    description.classList.add('description');
-    description.textContent = plant.description;
-
-    li.appendChild(description);
 
     // CATEGORY
     category.classList.add('category');
@@ -72,6 +68,7 @@ export function renderPlant(plant) {
 }
 
 
+
 export function findById(someArray, someId) {
     for (let i = 0; i < someArray.length; i++) {
         const item = someArray[i];
@@ -82,32 +79,48 @@ export function findById(someArray, someId) {
 }
 
 
+
 export function calcLineItem(quantity, price) {
     const subtotal = quantity * price;
     return Math.round(subtotal * 100) / 100;
 }
 
 
-export function calculateTotal(cart) {
-    let total = 0;
-
-    for (let i = 0; i < cart.length; i++) {
-        const item = cart[i];
-        const plant = findById(plants, item.id);
-        const subTotal = item.quantity * plant.price;
-        total = total + subTotal;
-    }
-    return total;
-}
 
 export function getFromLocalStorage(key) {
     const item = localStorage.getItem(key);
     return JSON.parse(item);
 }
 
+
+
 export function setInLocalStorage(key, value) {
     const stringItem = JSON.stringify(value);
     
     localStorage.setItem(key, stringItem);
     return value; 
+}
+
+
+
+export function seedAndGetProducts() {
+    let localStoragePlants = JSON.parse(localStorage.getItem(PRODUCTS)); 
+    if (!localStoragePlants) {
+        const stringPlants = JSON.stringify(hardCodedPlants);
+        localStorage.setItem(PRODUCTS, stringPlants);
+        localStoragePlants = hardCodedPlants;
+    }
+    return localStoragePlants;
+}
+
+
+export function addProduct(newProduct) {
+
+    const localStorageProducts = seedAndGetProducts();
+
+    localStorageProducts.push(newProduct);
+
+    const stringLocalProducts = JSON.stringify(localStorageProducts);
+
+    localStorage.setItem(PRODUCTS, stringLocalProducts);
 }

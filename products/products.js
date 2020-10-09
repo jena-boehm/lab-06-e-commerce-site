@@ -1,10 +1,12 @@
-import { renderPlant } from '../utils.js';
-import { plants } from '../data.js'; 
+import { renderPlant, seedAndGetProducts } from '../utils.js';
+// import { plants } from '../data.js'; 
+
+const localStoragePlants = seedAndGetProducts();
 
 const ul = document.querySelector('#plants');
 
-for (let i = 0; i < plants.length; i++) {
-    const plant = plants[i];
+for (let i = 0; i < localStoragePlants.length; i++) {
+    const plant = localStoragePlants[i];
 
     const li = renderPlant(plant);
 

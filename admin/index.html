@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/open-sans" type="text/css"/>
+    <link rel="stylesheet" href="./style.css">
+    <title>Admin</title>
+</head>
+
+<body> 
+    <main>
+        <section class="header">
+            <section class ="navigation">
+             <a href="../index.html"     class="cart-link">Home</a> | 
+                    <a href="../products"   class="cart-link">Products</a> | 
+                    <a href="../cart"   class="cart-link">Cart</a>
+            </section>
+        </section>
+        <h1>Plant Exchange</h1>
+        <section class="main-section">
+            <div>Have a plant you'd like to sell?<br>Tell us about it below to add it to the store:</div>
+            <form>
+                <input name="id" id="id" placeholder="Id" />
+                <input name="name" id="name" placeholder="Plant Name" />
+                <input name="image" id="image" placeholder="Image" />
+                <input name="price" id="price" placeholder="Price" />
+                <input name="category" id="category" placeholder="Category" />
+            <button>Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="./admin.js"></script>
+</body>
+
+</html>
